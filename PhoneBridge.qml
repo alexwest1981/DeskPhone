@@ -2,7 +2,8 @@ import QtQuick
 import Quickshell.Io
 
 // Serial busctl call queue + persistent JSON bus monitor, adapted from
-// seb-krz/omarchy-connect (MIT).
+// seb-krz/omarchy-connect (MIT). Extended for DeskPhone: monitors
+// conversations, telephony, and notifications interfaces.
 
 Item {
   id: root
@@ -79,10 +80,15 @@ Item {
   property int _backoffIndex: 0
   readonly property var _backoffs: [1000, 2000, 5000, 10000]
 
+  // Monitor conversations + telephony + notifications in one busctl session.
   Process {
     id: monitorProc
-    command: ["busctl", "--user", "--json=short", "monitor",
-              "--match=interface='org.kde.kdeconnect.device.conversations'"]
+    command: [
+      "busctl", "--user", "--json=short", "monitor",
+      "--match=interface='org.kde.kdeconnect.device.conversations'",
+      "--match=interface='org.kde.kdeconnect.device.telephony'",
+      "--match=interface='org.kde.kdeconnect.device.notifications'"
+    ]
     stdout: SplitParser {
       onRead: function (segment) { root.monitorLine(segment) }
     }

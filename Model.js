@@ -137,8 +137,8 @@ function fmtWhen(ms) {
   if (isNaN(d.getTime())) return ""
   var now = new Date()
   var sameDay = d.getFullYear() === now.getFullYear() &&
-                 d.getMonth() === now.getMonth() &&
-                 d.getDate() === now.getDate()
+                d.getMonth() === now.getMonth() &&
+                d.getDate() === now.getDate()
   function two(n) { return (n < 10 ? "0" : "") + n }
   var hhmm = two(d.getHours()) + ":" + two(d.getMinutes())
   if (sameDay) return hhmm
@@ -175,4 +175,32 @@ function parseDeviceCliLines(text) {
     devices.push({ id: id, name: name })
   }
   return devices
+}
+
+// Parse a notificationPosted/Updated signal value.
+// KDE Connect sends the notification ID as a plain string.
+function parseNotifId(val) {
+  if (typeof val === "string") return val
+  if (Array.isArray(val) && val.length > 0) return String(val[0])
+  return null
+}
+
+// Decode a notification object fetched via busctl get-property / introspect.
+// Properties: appName (s), id (s), ticker (s), isCancelable (b), hasReplyId (s)
+function decodeNotifProps(jsonText) {
+  try {
+    var o = JSON.parse(jsonText)
+    o = unwrap(o)
+    if (!o || typeof o !== "object" || Array.isArray(o)) return null
+    return {
+      appName:  String(o.appName  || o.app_name   || ""),
+      id:       String(o.id       || ""),
+      ticker:   String(o.ticker   || ""),
+      title:    String(o.title    || ""),
+      text:     String(o.text     || o.body        || ""),
+      isCancelable: Boolean(o.isCancelable),
+      hasReplyId:   String(o.hasReplyId || ""),
+      ts: Date.now()
+    }
+  } catch(e) { return null }
 }

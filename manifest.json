@@ -1,29 +1,30 @@
 {
   "schemaVersion": 1,
-  "id": "alex.sms",
-  "name": "DeskSMS",
-  "version": "1.0.0",
+  "id": "alex.phone",
+  "name": "DeskPhone",
+  "version": "2.0.0",
   "author": "Alex Weström",
   "license": "MIT",
-  "description": "DeskSMS – läs och svara på telefonens SMS direkt från skrivbordet via KDE Connect.",
+  "description": "DeskPhone – SMS, samtal och notifikationer direkt från skrivbordet via KDE Connect.",
   "kinds": [
     "panel",
     "bar-widget"
   ],
   "keepLoaded": true,
   "entryPoints": {
-    "panel": "SmsPanel.qml",
+    "panel": "PhonePanel.qml",
     "barWidget": "BarWidget.qml"
   },
   "barWidget": {
-    "displayName": "DeskSMS",
-    "description": "Öppna DeskSMS – konversationer, läs trådar, svara på telefonens SMS.",
+    "displayName": "DeskPhone",
+    "description": "Öppna DeskPhone – SMS, samtal och notifikationer från telefonen.",
     "category": "Communication",
     "aliases": [
+      "phone",
+      "deskphone",
       "sms",
-      "desksms",
-      "text",
-      "meddelanden"
+      "samtal",
+      "notiser"
     ],
     "allowMultiple": false,
     "defaultSection": "right"
