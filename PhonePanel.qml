@@ -831,6 +831,11 @@ Item {
                     Text {
                       anchors { top: parent.top; topMargin: 28; left: parent.left; leftMargin: 14; right: parent.right; rightMargin: 60 }
                       text: modelData.body
+                      // PlainText, never Qt's default AutoText: the body comes from
+                      // whoever sent the SMS, and markup in it would make the shell
+                      // fetch a URL of their choosing (marketplace review of the
+                      // DeskSMS submission, 2026-10-01).
+                      textFormat: Text.PlainText
                       color: Qt.darker(Color.foreground, 1.4)
                       font { family: Style.font.family; pixelSize: Style.font.caption; italic: modelData.pending === true }
                       elide: Text.ElideRight
@@ -919,6 +924,9 @@ Item {
                         id: bodyTxt
                         width: parent.width
                         text: modelData.body
+                        // See the thread preview above: an SMS body is untrusted
+                        // text and must never be parsed as markup.
+                        textFormat: Text.PlainText
                         wrapMode: Text.WordWrap
                         color: modelData.me ? "#ffffff" : Color.foreground
                         font { family: Style.font.family; pixelSize: Style.font.body }
