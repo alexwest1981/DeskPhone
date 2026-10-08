@@ -5,6 +5,8 @@ from your Omarchy desktop, through [KDE Connect](https://kdeconnect.kde.org/).
 No cloud, no forwarding service and no credentials: the plugin talks directly
 to the local KDE Connect daemon over D-Bus.
 
+![DeskPhone](preview.png)
+
 ## Install
 
 ```bash
