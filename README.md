@@ -11,13 +11,6 @@ to the local KDE Connect daemon over D-Bus.
 omarchy plugin add https://github.com/alexwest1981/DeskPhone --enable
 ```
 
-From a clone instead:
-
-```bash
-git clone https://github.com/alexwest1981/DeskPhone ~/.config/omarchy/plugins/io.github.alexwest1981.deskphone
-omarchy plugin enable io.github.alexwest1981.deskphone
-```
-
 ## Remove
 
 ```bash
