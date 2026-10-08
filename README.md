@@ -14,17 +14,17 @@ omarchy plugin add https://github.com/alexwest1981/DeskPhone --enable
 From a clone instead:
 
 ```bash
-git clone https://github.com/alexwest1981/DeskPhone ~/.config/omarchy/plugins/alex.phone
-omarchy plugin enable alex.phone
+git clone https://github.com/alexwest1981/DeskPhone ~/.config/omarchy/plugins/io.github.alexwest1981.deskphone
+omarchy plugin enable io.github.alexwest1981.deskphone
 ```
 
 ## Remove
 
 ```bash
-omarchy plugin remove alex.phone --yes
+omarchy plugin remove io.github.alexwest1981.deskphone --yes
 ```
 
-`omarchy plugin disable alex.phone` only takes the widget out of the bar and
+`omarchy plugin disable io.github.alexwest1981.deskphone` only takes the widget out of the bar and
 keeps the plugin installed.
 
 ## Features
@@ -65,23 +65,24 @@ the machine except the reply you deliberately send.
 Open the window from the bar widget (DeskPhone) or with:
 
 ```
-omarchy-shell shell toggle alex.phone '{}'
+omarchy-shell shell toggle io.github.alexwest1981.deskphone '{}'
 ```
 
 If the plugin can't find the phone it shows the reason (no paired device, SMS
 plugin not available, …). Right-click the bar widget or run
-`omarchy-shell shell call alex.phone refresh '{}'` to rescan.
+`omarchy-shell shell call io.github.alexwest1981.deskphone refresh '{}'` to rescan.
 
 ## Files
 
 ```
-alex.phone/
+io.github.alexwest1981.deskphone/
 ├── manifest.json        plugin manifest (panel + bar widget)
 ├── BarWidget.qml        bar launcher
 ├── PhonePanel.qml       root: device scan, SMS/calls/notifications UI
 ├── PhoneBridge.qml      serial busctl call queue + persistent bus monitor
 ├── Model.js             decoding of busctl --json=short structs
-└── README.md
+├── README.md
+└── LICENSE              MIT
 ```
 
 No network, no keys: the panel shells out to `busctl`/`kdeconnect-cli` and reads

@@ -77,7 +77,7 @@ Item {
 
   function requestClose() {
     if (root.shell && typeof root.shell.hide === "function") {
-      root.shell.hide("alex.phone")
+      root.shell.hide("io.github.alexwest1981.deskphone")
     } else {
       root.close()
     }
@@ -92,7 +92,7 @@ Item {
   }
 
   IpcHandler {
-    target: "alex.phone"
+    target: "io.github.alexwest1981.deskphone"
     function open(): string  { return root.open("{}") }
     function close(): string { return root.close() }
     function toggle(): string { return root.toggle() }

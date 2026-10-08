@@ -4,7 +4,7 @@ import qs.Ui
 
 BarWidget {
   id: root
-  moduleName: "alex.phone"
+  moduleName: "io.github.alexwest1981.deskphone"
 
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
@@ -18,9 +18,9 @@ BarWidget {
     onPressed: function(btn) {
       if (!root.bar) return
       if (btn === Qt.RightButton) {
-        root.bar.run("omarchy-shell shell call alex.phone refresh '{}'")
+        root.bar.run("omarchy-shell shell call io.github.alexwest1981.deskphone refresh '{}'")
       } else {
-        root.bar.run("omarchy-shell shell toggle alex.phone '{}'")
+        root.bar.run("omarchy-shell shell toggle io.github.alexwest1981.deskphone '{}'")
       }
     }
   }

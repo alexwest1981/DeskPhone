@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "alex.phone",
+  "id": "io.github.alexwest1981.deskphone",
   "name": "DeskPhone",
   "version": "2.0.0",
   "author": "Alex Weström",
