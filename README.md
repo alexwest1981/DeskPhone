@@ -5,6 +5,28 @@ from your Omarchy desktop, through [KDE Connect](https://kdeconnect.kde.org/).
 No cloud, no forwarding service and no credentials: the plugin talks directly
 to the local KDE Connect daemon over D-Bus.
 
+## Install
+
+```bash
+omarchy plugin add https://github.com/alexwest1981/DeskPhone --enable
+```
+
+From a clone instead:
+
+```bash
+git clone https://github.com/alexwest1981/DeskPhone ~/.config/omarchy/plugins/alex.phone
+omarchy plugin enable alex.phone
+```
+
+## Remove
+
+```bash
+omarchy plugin remove alex.phone --yes
+```
+
+`omarchy plugin disable alex.phone` only takes the widget out of the bar and
+keeps the plugin installed.
+
 ## Features
 
 - **Conversations** – thread list straight from the phone, with sender number,
@@ -96,3 +118,7 @@ qmllint -I /usr/share/omarchy/shell -I /usr/lib/qt6/qml PhonePanel.qml PhoneBrid
 - The D-Bus surface is that of KDE Connect 26.08.0 (`ConversationMessage` as a
   positional struct). Newer daemons may change field order – update
   `msgFromEntry` in `Model.js` if decoding starts to drift.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
